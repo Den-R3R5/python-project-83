@@ -7,3 +7,5 @@ __pycache__
 .env
 .coverage
 coverage.xml
+
+page_analyzer/static/css/style.css
