@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page analyzer</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body class="bg-white flex flex-col min-h-screen">
+    <header>
+      <nav class="bg-zinc-800 text-white p-3 flex items-center gap-4">
+        <a
+          href="{{ url_for('index') }}"
+          class="font-bold text-base text-white hover:text-amber-100"
+          >Анализатор страниц</a
+        >
+        <a
+          href="{{ url_for('index') }}"
+          class="font-light text-sm text-gray-400 hover:text-amber-100"
+        >
+          Сайты</a
+        >
+      </nav>
+    </header>
+    {% if messages %}
+    <ul class="flashes" role="alert">
+      {% for category, message in messages %} {% if category == "success" %}
+      <li class="{{ category }} bg-green-200">{{ message }}</li>
+      {% else %}
+      <li class="{{ category }} bg-red-200">{{ message }}</li>
+      {% endif %} {% endfor %}
+    </ul>
+    {% endif %}
+    <main class="flex-1 p-6">{% block content %}{% endblock %}</main>
+    <footer>
+      <div class="border-t border-t-gray-300 text-center p-3">
+        <a
+          href="https://ru.hexlet.io"
+          class="text-xs text-blue-600 hover:text-blue-400 underline"
+          >Hexlet</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
