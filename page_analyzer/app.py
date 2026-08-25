@@ -24,3 +24,8 @@ def index():
         messages=messages,
     )
 
+
+@app.post("/")
+def test():
+    flash("This is a message", "error")
+    return redirect(url_for("index"))
