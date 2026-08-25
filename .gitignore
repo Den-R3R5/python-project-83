@@ -5,9 +5,5 @@ __pycache__
 .pytest_cache/
 .uv/
 .env
-dist/
-build/
-*.egg-info
 .coverage
 coverage.xml
-*_cache/
