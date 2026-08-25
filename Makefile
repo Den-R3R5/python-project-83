@@ -6,7 +6,9 @@ install:
 start:
 	uv run gunicorn -w 5 -b 0.0.0.0:$(PORT) page_analyzer:app
 
-dev:
+dev-twind:
+	uv run tailwindcss -i ./page_analyzer/static/src/input.css -o ./page_analyzer/static/css/style.css --watch
+
 dev-flask:
 	uv run flask --debug --app page_analyzer:app run
 
