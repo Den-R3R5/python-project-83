@@ -25,12 +25,12 @@ def get_url_by_name(name):
     return result
 
 
-def get_url_by_id(id):
+def get_url_by_id(url_id):
     with _connect() as conn:
         with conn.cursor(row_factory=namedtuple_row) as cur:
             cur.execute(
                 "SELECT * FROM urls WHERE id = %s;",
-                (id,),
+                (url_id,),
             )
             result = cur.fetchone()
     return result
