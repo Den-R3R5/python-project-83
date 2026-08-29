@@ -19,6 +19,21 @@ def index():
     return render_template("index.html")
 
 
+@app.post("/urls")
+def urls_post():
+    url = request.form.get("url")
+    if not link_validate(url):
+        flash("Некорректный URL", "failed")
+        return render_template("index.html")
+    url_normalized = link_normalize(url)
+    if get_url_by_name(url_normalized):
+        id = get_url_by_name(url_normalized).id
+        flash("Страница уже существует", "success")
+        return redirect(url_for("urls_id_show", id=id))
+    else:
+        id = add_url(url_normalized)
+        flash("Страница успешно добавлена", "success")
+        return redirect(url_for("urls_id_show", id=id))
 
 @app.post("/")
 def test():
