@@ -10,6 +10,14 @@ load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 
+def init_db():
+    with _connect() as conn:
+        with conn.cursor() as cur:
+            with open("database.sql", "r") as f:
+                cur.execute(f.read())
+            conn.commit()
+
+
 def _connect():
     return psycopg.connect(DATABASE_URL)
 

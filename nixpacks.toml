@@ -1,3 +1,0 @@
-[providers]
-# For railway
-aptPkgs = ["postgresql-client"]
