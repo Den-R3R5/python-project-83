@@ -35,3 +35,8 @@ def urls_post():
         flash("Страница успешно добавлена", "success")
         return redirect(url_for("urls_id_show", id=id))
 
+
+@app.get("/urls")
+def urls_show():
+    urls = get_all_urls()
+    return render_template("urls/list.html", urls=urls)
