@@ -40,3 +40,9 @@ def urls_post():
 def urls_show():
     urls = get_all_urls()
     return render_template("urls/list.html", urls=urls)
+
+
+@app.get("/urls/<int:id>")
+def urls_id_show(id):
+    url_info = get_url_by_id(id)
+    return render_template("urls/id.html", url=url_info)
