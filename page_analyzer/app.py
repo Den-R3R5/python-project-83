@@ -9,6 +9,8 @@ from flask import (
     url_for,
 )
 
+from .utils import link_normalize, link_validate
+
 load_dotenv()
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
