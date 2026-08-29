@@ -9,6 +9,7 @@ from flask import (
     url_for,
 )
 
+from .db import add_url, get_all_urls, get_url_by_id, get_url_by_name
 from .utils import link_normalize, link_validate
 
 load_dotenv()
