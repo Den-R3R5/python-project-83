@@ -25,15 +25,16 @@
         >
       </nav>
     </header>
-    {% if messages %}
-    <ul class="flashes" role="alert">
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <ul class="flashes text-center" role="alert">
       {% for category, message in messages %} {% if category == "success" %}
-      <li class="{{ category }} bg-green-200">{{ message }}</li>
+      <li class="{{ category }} bg-green-200 p-1 ">{{ message }}</li>
       {% else %}
-      <li class="{{ category }} bg-red-200">{{ message }}</li>
+      <li class="{{ category }} bg-red-200 p-1">{{ message }}</li>
       {% endif %} {% endfor %}
     </ul>
-    {% endif %}
+    {% endif %} {% endwith %}
     <main class="flex-1 p-6">{% block content %}{% endblock %}</main>
     <footer>
       <div class="border-t border-t-gray-300 text-center p-3">

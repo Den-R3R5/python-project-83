@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from flask import (
     Flask,
     flash,
-    get_flashed_messages,
     redirect,
     render_template,
     url_for,
@@ -17,15 +16,8 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
 @app.get("/")
 def index():
-    messages = get_flashed_messages(with_categories=True)
 
-    return render_template(
-        "index.html",
-        messages=messages,
-    )
 
 
 @app.post("/")
 def test():
-    flash("This is a message", "error")
-    return redirect(url_for("index"))
