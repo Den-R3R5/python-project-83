@@ -3,15 +3,17 @@
 <div class="px-6 w-full">
   <table class="w-full table-fixed" data-test="url">
     <tr>
-      <td class="border border-zinc-300 p-2">ID</td>
+      <th class="border border-zinc-300 p-2 text-left font-normal">ID</th>
       <td class="border border-zinc-300 p-2">{{ url.id }}</td>
     </tr>
     <tr class="bg-zinc-100">
-      <td class="border border-zinc-300 p-2">Имя</td>
+      <th class="border border-zinc-300 p-2 text-left font-normal">Имя</th>
       <td class="border border-zinc-300 p-2">{{ url.name }}</td>
     </tr>
     <tr>
-      <td class="border border-zinc-300 p-2">Дата создания</td>
+      <th class="border border-zinc-300 p-2 text-left font-normal">
+        Дата создания
+      </th>
       <td class="border border-zinc-300 p-2">
         {{ url.created_at.strftime('%Y-%m-%d') }}
       </td>
