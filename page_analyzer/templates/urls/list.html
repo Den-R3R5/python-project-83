@@ -1,0 +1,38 @@
+{% extends "layout.html" %} {% block content %}
+<h1 class="font-semibold text-4xl mx-6 my-2">Сайты</h1>
+<div class="px-6 w-full">
+  <table class="w-full" data-test="urls">
+    <thead>
+      <tr>
+        <th class="border border-zinc-300 p-2 text-left font-normal">ID</th>
+        <th class="border border-zinc-300 p-2 text-left font-normal">Имя</th>
+        <th class="border border-zinc-300 p-2 text-left font-normal">
+          Последняя проверка
+        </th>
+        <th class="border border-zinc-300 p-2 text-left font-normal">
+          Код ответа
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for url in urls %}
+      <tr>
+        <td class="border border-zinc-300 p-2">{{ url.id }}</td>
+        <td class="border border-zinc-300 p-2">
+          <a
+            href="{{ url_for('urls_id_show', id=url.id)}}"
+            class="text-blue-600 hover:text-blue-400 underline"
+            >{{ url.name }}</a
+          >
+        </td>
+        <td class="border border-zinc-300 p-2">placeholder</td>
+        <td class="border border-zinc-300 p-2">
+          {{ url.created_at.strftime('%Y-%m-%d') }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
