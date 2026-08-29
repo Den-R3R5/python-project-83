@@ -3,13 +3,16 @@
   class="border rounded-md border-zinc-300 bg-zinc-100 justify-center max-w-3xl mx-auto p-7"
 >
   <h1 class="text-5xl font-semibold p-2">Анализатор страниц</h1>
-  <p class="text-xl p-2">Бесплатно проверяйте сайты на Seo-пригодность</p>
+  <label for="url-input" class="block text-xl p-2 cursor-pointer">
+    Бесплатно проверяйте сайты на Seo-пригодность
+  </label>
   <form
     action="{{ url_for('urls_post') }}"
     method="post"
     class="gap-4 p-2 flex"
   >
     <input
+      id="url-input"
       type="url"
       name="url"
       class="form-input p-2 grow rounded border-zinc-300 hover:border-zinc-500"
