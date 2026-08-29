@@ -43,9 +43,9 @@ def add_url(name):
                 "INSERT INTO urls(name) VALUES(%s) RETURNING id",
                 (name,),
             )
-            id = cur.fetchone()[0]
+            url_id = cur.fetchone()[0]
             conn.commit()
-    return id
+    return url_id
 
 
 def get_all_urls():
