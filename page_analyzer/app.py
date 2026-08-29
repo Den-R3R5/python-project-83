@@ -16,6 +16,7 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
 @app.get("/")
 def index():
+    return render_template("index.html")
 
 
 
