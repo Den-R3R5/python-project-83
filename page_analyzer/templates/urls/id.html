@@ -1,0 +1,28 @@
+{% extends "layout.html" %} {% block content %}
+<h1 class="font-semibold text-4xl mx-6 my-2">Сайт: {{ url.name }}</h1>
+<div class="px-6 w-full">
+  <table class="w-full table-fixed" data-test="url">
+    <tr>
+      <td class="border border-zinc-300 p-2">ID</td>
+      <td class="border border-zinc-300 p-2">{{ url.id }}</td>
+    </tr>
+    <tr class="bg-zinc-100">
+      <td class="border border-zinc-300 p-2">Имя</td>
+      <td class="border border-zinc-300 p-2">{{ url.name }}</td>
+    </tr>
+    <tr>
+      <td class="border border-zinc-300 p-2">Дата создания</td>
+      <td class="border border-zinc-300 p-2">
+        {{ url.created_at.strftime('%Y-%m-%d') }}
+      </td>
+    </tr>
+  </table>
+</div>
+<h1 class="font-semibold text-4xl mx-6 mt-16 mb-3">Проверки</h1>
+<button
+  class="text-white font-semibold p-2 px-6 mx-6 bg-blue-500 rounded hover:bg-blue-700"
+  type="submit"
+>
+  Запустить проверку
+</button>
+{% endblock %}
