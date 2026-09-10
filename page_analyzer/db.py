@@ -60,7 +60,9 @@ def add_check(url_id, status_code, h1, title, description):
     with _connect() as conn:
         with conn.cursor() as cur:
             cur.execute(
-                "INSERT INTO url_checks(url_id, status_code, h1, title, description) VALUES(%s)",
+                """INSERT INTO 
+                url_checks(url_id, status_code, h1, title, description) 
+                VALUES(%s)""",
                 (url_id, status_code, h1, title, description),
             )
             conn.commit()
