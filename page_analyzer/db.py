@@ -56,6 +56,14 @@ def add_url(name):
     return url_id
 
 
+def add_check(url_id, status_code, h1, title, description):
+    with _connect() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "INSERT INTO url_checks(url_id, status_code, h1, title, description) VALUES(%s)",
+                (url_id, status_code, h1, title, description),
+            )
+            conn.commit()
 def get_all_urls():
     with _connect() as conn:
         with conn.cursor(row_factory=namedtuple_row) as cur:
