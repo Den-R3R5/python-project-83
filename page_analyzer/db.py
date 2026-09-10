@@ -64,6 +64,19 @@ def add_check(url_id, status_code, h1, title, description):
                 (url_id, status_code, h1, title, description),
             )
             conn.commit()
+
+
+def get_all_checks(url_id):
+    with _connect() as conn:
+        with conn.cursor(row_factory=namedtuple_row) as cur:
+            cur.execute(
+                "SELECT * FROM url_checks WHERE url_id = %s;",
+                (url_id,),
+            )
+            result = cur.fetchall()
+    return result
+
+
 def get_all_urls():
     with _connect() as conn:
         with conn.cursor(row_factory=namedtuple_row) as cur:
