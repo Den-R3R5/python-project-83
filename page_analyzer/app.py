@@ -18,7 +18,7 @@ from .db import (
     get_url_by_id,
     get_url_by_name,
 )
-from .utils import link_normalize, link_validate
+from .utils import link_normalize, link_status, link_validate
 
 load_dotenv()
 app = Flask(__name__)
@@ -62,8 +62,10 @@ def urls_id_show(url_id):
 
 @app.post("/urls/<int:url_id>/checks")
 def urls_id_post(url_id):
+    url_info = get_url_by_id(url_id)
     try:
-        add_check(url_id)
+        url_status = link_status(url_info.name)
+        add_check(url_id, url_status)
         flash("Страница успешно проверена", "success")
     except Exception:
         flash("Произошла ошибка при проверке", "error")
