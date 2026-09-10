@@ -21,10 +21,46 @@
   </table>
 </div>
 <h1 class="font-semibold text-4xl mx-6 mt-16 mb-3">Проверки</h1>
-<button
-  class="text-white font-semibold p-2 px-6 mx-6 bg-blue-500 rounded hover:bg-blue-700"
-  type="submit"
->
-  Запустить проверку
-</button>
+
+<form method="post" action="{{ url_for('urls_id_post', url_id=url.id) }}">
+  <input
+    type="submit"
+    value="Запустить проверку"
+    class="text-white font-semibold px-6 py-2 mx-6 my-2 bg-blue-500 rounded hover:bg-blue-700"
+  />
+</form>
+<div class="px-6 w-full">
+  <table data-test="checks" class="w-full">
+    <thead>
+      <tr>
+        <th class="border border-zinc-300 p-2 text-left font-normal">ID</th>
+        <th class="border border-zinc-300 p-2 text-left font-normal">
+          Код ответа
+        </th>
+        <th class="border border-zinc-300 p-2 text-left font-normal">h1</th>
+        <th class="border border-zinc-300 p-2 text-left font-normal">title</th>
+        <th class="border border-zinc-300 p-2 text-left font-normal">
+          description
+        </th>
+        <th class="border border-zinc-300 p-2 text-left font-normal">
+          Дата создания
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for check in url_checks %}
+      <tr>
+        <td class="border border-zinc-300 p-2">{{check.id}}</td>
+        <td class="border border-zinc-300 p-2">{{check.status_code}}</td>
+        <td class="border border-zinc-300 p-2">{{check.h1}}</td>
+        <td class="border border-zinc-300 p-2">{{check.title}}</td>
+        <td class="border border-zinc-300 p-2">{{check.description}}</td>
+        <td class="border border-zinc-300 p-2">
+          {{ check.created_at.strftime('%Y-%m-%d') }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
