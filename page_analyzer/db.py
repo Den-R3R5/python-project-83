@@ -80,6 +80,15 @@ def get_all_checks(url_id):
 def get_all_urls():
     with _connect() as conn:
         with conn.cursor(row_factory=namedtuple_row) as cur:
-            cur.execute("SELECT * FROM urls;")
+            cur.execute("""
+                SELECT DISTINCT ON (urls.id)
+                    urls.id,
+                    urls.name,
+                    url_checks.created_at,
+                    url_checks.status_code
+                FROM urls
+                LEFT JOIN url_checks ON urls.id = url_checks.url_id
+                ORDER BY urls.id DESC, url_checks.id DESC;
+            """)
             result = cur.fetchall()
     return result
