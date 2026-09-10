@@ -56,4 +56,15 @@ def urls_show():
 @app.get("/urls/<int:url_id>")
 def urls_id_show(url_id):
     url_info = get_url_by_id(url_id)
-    return render_template("urls/id.html", url=url_info)
+    url_checks = get_all_checks(url_id)
+    return render_template("urls/id.html", url=url_info, url_checks=url_checks)
+
+
+@app.post("/urls/<int:url_id>/checks")
+def urls_id_post(url_id):
+    try:
+        add_check(url_id)
+        flash("Страница успешно проверена", "success")
+    except Exception:
+        flash("Произошла ошибка при проверке", "error")
+    return redirect(url_for("urls_id_show", url_id=url_id))
