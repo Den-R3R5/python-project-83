@@ -2,7 +2,6 @@ from urllib.parse import urlparse
 
 import requests
 from bs4 import BeautifulSoup
-from requests.exceptions import RequestException
 from validators import url
 
 
@@ -28,15 +27,12 @@ def link_validate(link):
 
 
 def link_response(link):
-    try:
-        response = requests.get(link)
-        response.raise_for_status()
-        return {
-            "response_text": response.text,
-            "response_status": response.status_code,
-        }
-    except RequestException as e:
-        raise e
+    response = requests.get(link)
+    response.raise_for_status()
+    return {
+        "response_text": response.text,
+        "response_status": response.status_code,
+    }
 
 
 def link_get_tags(response):
@@ -46,9 +42,17 @@ def link_get_tags(response):
     title_tag = soup.find("title")
     meta_tag = soup.find("meta", attrs={"name": "description"})
 
-    h1 = h1_tag.get_text().strip() if h1_tag else ""
-    title = title_tag.get_text().strip() if title_tag else ""
-    description = meta_tag.get("content", "").strip() if meta_tag else ""
+    h1 = ""
+    if h1_tag:
+        h1 = h1_tag.get_text().strip()
+
+    title = ""
+    if title_tag:
+        title = title_tag.get_text().strip()
+
+    description = ""
+    if meta_tag:
+        description = meta_tag.get("content", "").strip()
 
     return {
         "status_code": status_code,
