@@ -27,7 +27,7 @@ def link_validate(link):
 
 
 def link_response(link):
-    response = requests.get(link)
+    response = requests.get(link, timeout=10)
     response.raise_for_status()
     return {
         "response_text": response.text,
