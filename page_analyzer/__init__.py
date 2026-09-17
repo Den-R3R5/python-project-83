@@ -8,7 +8,12 @@ from .db import (
     get_url_by_name,
     init_db,
 )
-from .utils import link_normalize, link_status, link_validate
+from .utils import (
+    link_get_tags,
+    link_normalize,
+    link_response,
+    link_validate,
+)
 
 __all__ = (
     "app",
@@ -19,7 +24,8 @@ __all__ = (
     "get_url_by_id",
     "get_url_by_name",
     "init_db",
+    "link_get_tags",
     "link_normalize",
-    "link_status",
+    "link_response",
     "link_validate",
 )
