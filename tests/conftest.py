@@ -1,13 +1,12 @@
 import os
 
+os.environ["DATABASE_URL"] = os.getenv(
+    "DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/postgres"
+)
 import pytest
 
 from page_analyzer.app import app
 from page_analyzer.db import _connect, init_db
-
-os.environ["DATABASE_URL"] = os.getenv(
-    "DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/postgres"
-)
 
 
 @pytest.fixture(scope="session", autouse=True)
