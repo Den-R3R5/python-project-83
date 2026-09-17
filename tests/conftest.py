@@ -3,6 +3,7 @@ import os
 os.environ["DATABASE_URL"] = os.getenv(
     "DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/postgres"
 )
+os.environ["SECRET_KEY"] = os.getenv("SECRET_KEY", "test-secret-key")
 import pytest
 
 from page_analyzer.app import app
