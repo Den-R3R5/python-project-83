@@ -41,7 +41,7 @@ def test_urls_post(client):
     assert "Страница уже существует" in response_repeat.text
 
     response_invalid = client.post("/urls", data=data_2)
-    assert response_invalid.status_code == 200
+    assert response_invalid.status_code == 422
     assert "Некорректный URL" in response_invalid.text
 
 
