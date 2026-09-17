@@ -82,8 +82,12 @@ def html():
     </title>
     <meta
       name="description"
-      content="Описание - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut iaculis iaculis efficitur. Nullam facilisis, est vel porttitor sollicitudin, ligula lectus accumsan neque, ut efficitur metus eros id mi. Praesent sit amet risus arcu. Vestibulum quis efficitur enim, at tincidunt mauris. Fusce laoreet nisl porttitor lorem tristique blandit. Pellentesque habitant morbi tristique senectus et netus et malesuada."
-    />
+      content="Описание - Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Ut iaculis iaculis efficitur. Nullam facilisis, est vel porttitor
+      sollicitudin, ligula lectus accumsan neque, ut efficitur metus eros id mi.
+      Praesent sit amet risus arcu. Vestibulum quis efficitur enim, at tincidunt
+      mauris. Fusce laoreet nisl porttitor lorem tristique blandit. Pellentesque
+      habitant morbi tristique senectus et netus et malesuada./>
   </head>
   <body>
     <h1>

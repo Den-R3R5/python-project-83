@@ -1,7 +1,5 @@
 import sys
-from unittest.mock import Mock
 
-import pytest
 from requests.exceptions import RequestException
 
 from page_analyzer.db import add_url
