@@ -35,7 +35,7 @@ def urls_post():
     url = request.form.get("url")
     if not link_validate(url):
         flash("Некорректный URL", "failed")
-        return render_template("index.html")
+        return render_template("index.html"), 422
     url_normalized = link_normalize(url)
     if get_url_by_name(url_normalized):
         url_id = get_url_by_name(url_normalized).id
