@@ -110,7 +110,7 @@ def get_all_urls():
                 SELECT DISTINCT ON (urls.id)
                     urls.id,
                     urls.name,
-                    TO_CHAR(url_checks.created_at, 'YYYY-MM-DD'),
+                    TO_CHAR(url_checks.created_at, 'YYYY-MM-DD') as created_at,
                     url_checks.status_code
                 FROM urls
                 LEFT JOIN url_checks ON urls.id = url_checks.url_id
